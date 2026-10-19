@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Card Draw</title>
+
+    <link rel="stylesheet"
+          href="styles.css">
+
+</head>
+
+
+<body>
+
+<div class="container card-draw-page">
+
+    <h1>Card Draw</h1>
+
+
+    <!-- Shared filters will be created here -->
+
+    <div id="filterContainer"></div>
+
+
+    <br>
+
+
+    <div class="card-output">
+
+        <button id="drawButton">
+            Draw Card
+        </button>
+
+        <div id="output">
+
+        </div>
+
+    </div>
+
+
+    <br>
+
+
+    <a class="menu-button"
+       href="index.html">
+
+        ← Back to Menu
+
+    </a>
+	
+	<button id="downloadHistory">
+		Download Card History
+	</button>
+
+</div>
+
+
+<!-- Shared Hearthstone functionality -->
+
+<script src="hearthstone.js"></script>
+
+
+<!-- Shared filter functionality -->
+
+<script src="filters.js"></script>
+
+
+<!-- Create CSV File functionality -->
+
+<script src="csv.js"></script>
+
+
+<!-- Card Draw functionality -->
+
+<script src="carddraw.js"></script>
+
+
+</body>
+
+</html>

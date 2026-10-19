@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Pack Simulator</title>
+
+    <link rel="stylesheet"
+          href="styles.css">
+
+</head>
+
+
+<body>
+
+<div class="container pack-simulator-page">
+
+    <h1>Pack Simulator</h1>
+	
+	</br>
+	
+	<div class="pack-rules-toggle">
+	
+	<label>
+        <input type="checkbox" id="standardPackRules">
+        Use Standard Pack Rules
+    </label>
+
+	</div>
+	
+	<!-- Shared filters will be created here -->
+
+    <div id="filterContainer"></div>
+
+
+    <br>
+
+
+    <div class="pack-output">
+
+        <button id="openPack">
+            Open Pack
+        </button>
+
+        <div id="packContainer">
+
+        </div>
+
+    </div>
+
+
+    <br>
+
+
+    <a class="menu-button"
+       href="index.html">
+
+        ← Back to Menu
+
+    </a>
+	
+	<button id="downloadHistory">
+		Download Card History
+	</button>
+
+</div>
+
+
+<!-- Shared Hearthstone functionality -->
+
+<script src="hearthstone.js"></script>
+
+
+<!-- Shared filters -->
+
+<script src="filters.js"></script>
+
+
+<!-- Create CSV File functionality -->
+
+<script src="csv.js"></script>
+
+
+<!-- Pack Simulator functionality -->
+
+<script src="packsim.js"></script>
+
+
+</body>
+
+</html>

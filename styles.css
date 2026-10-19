@@ -1,0 +1,1308 @@
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#1d2330;
+    color:white;
+}
+
+
+/* Main Menu */
+
+h1{
+    text-align:center;
+    margin-top:60px;
+}
+
+.menu-container{
+    margin:80px auto;
+    width:320px;
+
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+
+    background:#2d3548;
+    padding:40px;
+    border-radius:16px;
+
+    box-shadow:0 0 20px rgba(0,0,0,.4);
+}
+
+.menu-button{
+    display:block;
+
+    text-decoration:none;
+
+    text-align:center;
+
+    font-size:1.25rem;
+    font-weight:bold;
+
+    padding:18px;
+
+    color:#111;
+    background:#ffb300;
+
+    border-radius:10px;
+
+    transition:.2s;
+}
+
+.menu-button:hover{
+    background:#ffc107;
+    transform:translateY(-2px);
+}
+
+
+/* Card Draw */
+
+.container{
+    width:420px;
+    margin:50px auto;
+    text-align:center;
+
+    background:#2d3548;
+    padding:30px;
+
+    border-radius:15px;
+
+    box-shadow:0 0 20px rgba(0,0,0,.5);
+
+    box-sizing:border-box;
+}
+
+
+/*
+ * Card Draw and Pack Simulator
+ * Desktop Layout
+ */
+
+.card-draw-page,
+.pack-simulator-page{
+
+    width:min(1800px, calc(100% - 40px));
+
+    display:grid;
+
+    grid-template-columns:
+        450px
+        1fr;
+
+    column-gap:30px;
+
+    align-items:start;
+
+    text-align:center;
+}
+
+
+/*
+ * Page title spans both columns.
+ */
+
+.card-draw-page h1,
+.pack-simulator-page h1{
+
+    grid-column:1 / -1;
+
+    margin-top:0;
+
+    margin-bottom:10px;
+}
+
+
+/*
+ * Filters occupy the left column.
+ */
+
+.card-draw-page #filterContainer,
+.pack-simulator-page #filterContainer{
+
+    grid-column:1;
+
+    grid-row:2;
+
+    width:100%;
+
+    max-height:calc(100vh - 180px);
+
+    overflow-y:auto;
+
+    box-sizing:border-box;
+
+    padding:20px;
+
+    background:#252c3d;
+
+    border-radius:12px;
+
+    text-align:center;
+}
+
+
+/*
+ * Right-side Card Draw content.
+ */
+
+.card-output{
+
+    grid-column:2;
+
+    grid-row:2;
+
+    width:100%;
+
+    min-width:0;
+
+    box-sizing:border-box;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:flex-start;
+
+}
+
+
+/*
+ * Right-side Pack Simulator content.
+ */
+
+.pack-output{
+
+    grid-column:2;
+
+    grid-row:2;
+
+    width:100%;
+
+    min-width:0;
+
+    box-sizing:border-box;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:flex-start;
+
+}
+
+
+/*
+ * Filter scrollbar.
+ */
+
+#filterContainer::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+#filterContainer::-webkit-scrollbar-track{
+
+    background:#1d2330;
+
+    border-radius:8px;
+
+}
+
+#filterContainer::-webkit-scrollbar-thumb{
+
+    background:#ffb300;
+
+    border-radius:8px;
+
+}
+
+#filterContainer::-webkit-scrollbar-thumb:hover{
+
+    background:#ffc107;
+
+}
+
+
+/*
+ * Card output.
+ */
+
+.card-output #output{
+
+    width:100%;
+
+    box-sizing:border-box;
+
+    margin-top:20px;
+
+}
+
+
+/*
+ * Pack output.
+ */
+
+.pack-output #packContainer{
+
+    width:100%;
+
+    margin-top:40px;
+
+}
+
+
+/*
+ * Mobile Layout
+ */
+
+@media (max-width:768px){
+
+    .card-draw-page,
+    .pack-simulator-page{
+
+        width:calc(100% - 30px);
+
+        display:flex;
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+        gap:20px;
+
+        text-align:center;
+
+    }
+
+
+    .card-draw-page h1,
+    .pack-simulator-page h1{
+
+        margin-top:20px;
+
+        margin-bottom:10px;
+
+    }
+
+
+    .card-draw-page #filterContainer,
+    .pack-simulator-page #filterContainer{
+
+        width:100%;
+
+        max-height:none;
+
+        overflow:visible;
+
+        padding:15px;
+
+        box-sizing:border-box;
+
+    }
+
+
+    .card-output,
+    .pack-output{
+
+        width:100%;
+
+    }
+
+
+    .card-output #output,
+    .pack-output #packContainer{
+
+        width:100%;
+
+    }
+
+}
+
+
+/*
+ * General buttons
+ */
+
+button{
+    padding:12px 24px;
+    font-size:18px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+
+    background:#ffb300;
+
+    color:#111;
+
+    transition:.2s;
+}
+
+button:hover{
+    background:#ffc107;
+}
+
+
+/*
+ * Dropdowns
+ */
+
+select{
+    width:220px;
+    padding:12px 16px;
+
+    font-size:16px;
+    font-weight:bold;
+
+    color:#111;
+    background:#ffb300;
+
+    border:none;
+    border-radius:8px;
+
+    cursor:pointer;
+
+    transition:0.2s;
+
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+
+    background-image:
+        linear-gradient(45deg, transparent 50%, #111 50%),
+        linear-gradient(135deg, #111 50%, transparent 50%);
+
+    background-position:
+        calc(100% - 22px) calc(50% - 3px),
+        calc(100% - 16px) calc(50% - 3px);
+
+    background-size:6px 6px;
+    background-repeat:no-repeat;
+}
+
+select:hover{
+    background-color:#ffc107;
+}
+
+select:focus{
+    outline:none;
+
+    box-shadow:
+        0 0 0 3px rgba(255,193,7,0.4);
+}
+
+select option{
+    background:#2d3548;
+    color:white;
+    font-weight:normal;
+}
+
+
+/*
+ * Card image
+ */
+
+img{
+    width:500px;
+    max-width:100%;
+    margin-top:20px;
+}
+
+
+/*
+ * Card information
+ */
+
+.info{
+    text-align:left;
+    margin-top:20px;
+}
+
+
+/*
+ * Status messages
+ */
+
+.loading{
+    color:#ffd54f;
+}
+
+.error{
+    color:#ff6666;
+}
+
+
+/*
+ * Pack Simulator
+ */
+
+#packContainer{
+    margin-top:40px;
+
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.pack-card{
+
+    width:250px;
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.pack-card:hover{
+    transform:scale(1.05);
+}
+
+
+/*
+ * Set / Ability search selectors
+ */
+
+.set-selector{
+    position:relative;
+    width:250px;
+    margin:0 auto;
+}
+
+#setFilter,
+#abilityFilter{
+
+    width:100%;
+
+    box-sizing:border-box;
+
+    padding:12px 16px;
+
+    font-size:16px;
+    font-weight:bold;
+
+    color:#111;
+
+    background:#ffb300;
+
+    border:none;
+    border-radius:8px;
+}
+
+#setFilter:focus,
+#abilityFilter:focus{
+    outline:none;
+
+    box-shadow:
+        0 0 0 3px rgba(255,193,7,.4);
+}
+
+.set-dropdown{
+
+    position:absolute;
+
+    top:100%;
+    left:0;
+
+    width:100%;
+
+    max-height:200px;
+
+    overflow-y:auto;
+
+    background:#2d3548;
+
+    border-radius:0 0 8px 8px;
+
+    z-index:10;
+}
+
+.set-option{
+
+    padding:10px;
+
+    cursor:pointer;
+
+    color:white;
+}
+
+.set-option:hover{
+
+    background:#ffb300;
+
+    color:#111;
+}
+
+
+/*
+ * Responsive Card Draw Layout
+ *
+ * Return to the original vertical layout
+ * on mobile devices.
+ */
+
+@media (max-width:768px){
+
+    .container{
+
+        width:calc(100% - 30px);
+
+        margin:30px auto;
+
+        padding:20px;
+
+    }
+
+
+    /*
+     * Card Draw returns to a single column.
+     */
+
+    .container:has(#filterContainer){
+
+        width:calc(100% - 30px);
+
+        display:flex;
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+        gap:20px;
+
+        text-align:center;
+
+    }
+
+
+    .container:has(#filterContainer) h1{
+
+        margin-top:20px;
+
+        margin-bottom:10px;
+
+    }
+
+
+    /*
+     * Filters are no longer independently
+     * height-limited on mobile.
+     */
+
+    #filterContainer{
+
+        width:100%;
+
+        max-height:none;
+
+        overflow:visible;
+
+        padding:15px;
+
+        box-sizing:border-box;
+
+    }
+
+
+    .container:has(#filterContainer) #drawButton{
+
+        width:auto;
+
+        align-self:center;
+
+        order:2;
+
+    }
+
+
+    .container:has(#filterContainer) #output{
+
+        width:100%;
+
+        order:3;
+
+    }
+
+
+    img{
+
+        max-width:100%;
+
+        height:auto;
+
+    }
+
+}
+
+
+/*
+ * Extra-small screens
+ */
+
+@media (max-width:480px){
+
+    .container{
+
+        width:calc(100% - 20px);
+
+        padding:15px;
+
+    }
+
+
+    .container:has(#filterContainer){
+
+        width:calc(100% - 20px);
+
+    }
+
+
+    #filterContainer{
+
+        padding:10px;
+
+    }
+
+
+    .set-selector{
+
+        width:100%;
+
+    }
+
+
+    .pack-card{
+
+        width:140px;
+
+    }
+
+}
+
+/* Filter spacing and titles */
+
+.filter-group{
+    margin-bottom:25px;
+}
+
+.filter-group label{
+    display:block;
+
+    margin-bottom:10px;
+
+    font-size:1.25rem;
+    font-weight:bold;
+}
+
+/*
+ * Filter Colors
+ */
+
+/* Shared filter option styling */
+
+.filter-option{
+    border:2px solid transparent;
+    transition:.2s;
+}
+
+
+/*
+ * Rarity
+ *
+ * Keeps the existing gold/yellow appearance.
+ */
+
+.filter-rarity .filter-option,
+.filter-chip-rarity{
+
+    background:#ffb300;
+    color:#111;
+
+}
+
+
+/*
+ * Mana Cost
+ *
+ * Blue
+ */
+
+.filter-mana .filter-option,
+.filter-chip-mana{
+
+    background:#2196f3;
+    color:white;
+
+}
+
+
+/*
+ * Power
+ *
+ * Bright yellow
+ */
+
+.filter-power .filter-option,
+.filter-chip-power{
+
+    background:#ffeb3b;
+    color:#111;
+
+}
+
+
+/*
+ * Health
+ *
+ * Red
+ */
+
+.filter-health .filter-option,
+.filter-chip-health{
+
+    background:#e53935;
+    color:white;
+
+}
+
+
+/*
+ * Card Type
+ *
+ * Brown
+ */
+
+.filter-type .filter-option,
+.filter-chip-type{
+
+    background:#795548;
+    color:white;
+
+}
+
+
+/*
+ * Class
+ *
+ * Green
+ */
+
+.filter-class .filter-option,
+.filter-chip-class{
+
+    background:#43a047;
+    color:white;
+
+}
+
+
+/*
+ * Abilities
+ *
+ * White
+ */
+
+.filter-ability .filter-option,
+.filter-chip-ability{
+
+    background:#ffffff;
+    color:#111;
+
+}
+
+
+/*
+ * Sets
+ *
+ * Purple
+ */
+
+.filter-set .filter-option,
+.filter-chip-set{
+
+    background:#9c27b0;
+    color:white;
+
+}
+
+
+/*
+ * Hover effects
+ */
+
+.filter-option:hover{
+
+    transform:translateY(-2px);
+
+    filter:brightness(1.1);
+
+}
+
+
+/*
+ * Selected filter chips
+ */
+
+.filter-chip{
+
+    padding:8px 12px;
+
+    margin:4px;
+
+    border:none;
+
+    border-radius:20px;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+
+.filter-chip:hover{
+
+    transform:scale(1.05);
+
+    filter:brightness(1.1);
+
+}
+
+/* =========================================
+   King of the Hill Layout
+   ========================================= */
+
+.king-of-the-hill-page{
+
+    width:min(1800px, calc(100% - 40px));
+
+    display:grid;
+
+    grid-template-columns:
+        450px
+        1fr;
+
+    column-gap:30px;
+
+    align-items:start;
+
+    text-align:center;
+
+}
+
+
+/*
+ * Page title spans both columns.
+ */
+
+.king-of-the-hill-page h1{
+
+    grid-column:1 / -1;
+
+    margin-top:0;
+
+    margin-bottom:10px;
+
+}
+
+
+/*
+ * Filters occupy the left column.
+ */
+
+.king-of-the-hill-page #filterContainer{
+
+    grid-column:1;
+
+    grid-row:2;
+
+    width:100%;
+
+    max-height:calc(100vh - 180px);
+
+    overflow-y:auto;
+
+    box-sizing:border-box;
+
+    padding:20px;
+
+    background:#252c3d;
+
+    border-radius:12px;
+
+    text-align:center;
+
+}
+
+
+/*
+ * Right-side King of the Hill content.
+ */
+
+.king-output{
+
+    grid-column:2;
+
+    grid-row:2;
+
+    width:100%;
+
+    min-width:0;
+
+    box-sizing:border-box;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:flex-start;
+
+}
+
+
+/*
+ * Two card positions.
+ */
+
+#kingContainer{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    gap:20px;
+
+    margin-top:40px;
+
+}
+
+
+/*
+ * Individual card positions.
+ *
+ * The width is based on the available
+ * right-side column rather than using
+ * a separate fixed card size.
+ */
+
+.king-card{
+
+    width:50%;
+
+    min-width:0;
+
+    text-align:center;
+
+}
+
+
+/*
+ * King of the Hill card images.
+ *
+ * Use the same 500px maximum image size
+ * as Card Draw.
+ */
+
+.king-card-image{
+
+    width:500px;
+
+    max-width:100%;
+
+    height:auto;
+
+    margin-top:0;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+
+/*
+ * Card hover effect.
+ */
+
+.king-card-image:hover{
+
+    transform:scale(1.03);
+
+}
+
+
+/*
+ * Card names.
+ */
+
+.king-card h2{
+
+    margin-top:15px;
+
+    margin-bottom:0;
+
+}
+
+
+/*
+ * Status text.
+ */
+
+#kingStatus{
+
+    margin-top:25px;
+
+    font-weight:bold;
+
+}
+
+
+/*
+ * Mobile King of the Hill layout.
+ */
+
+@media (max-width:768px){
+
+    .king-of-the-hill-page{
+
+        width:calc(100% - 30px);
+
+        display:flex;
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+        gap:20px;
+
+        text-align:center;
+
+    }
+
+
+    .king-of-the-hill-page h1{
+
+        margin-top:20px;
+
+        margin-bottom:10px;
+
+    }
+
+
+    .king-of-the-hill-page #filterContainer{
+
+        width:100%;
+
+        max-height:none;
+
+        overflow:visible;
+
+        padding:15px;
+
+        box-sizing:border-box;
+
+    }
+
+
+    .king-output{
+
+        width:100%;
+
+    }
+
+
+    #kingContainer{
+
+        width:100%;
+
+        display:flex;
+
+        flex-direction:column;
+
+        align-items:center;
+
+        gap:30px;
+
+        margin-top:20px;
+
+    }
+
+
+    .king-card{
+
+        width:100%;
+
+        max-width:400px;
+
+    }
+
+
+    .king-card-image{
+
+        width:500px;
+
+        max-width:100%;
+
+        height:auto;
+
+    }
+
+}
+
+/* =========================================
+   Higher or Lower
+   ========================================= */
+
+.higher-or-lower-page{
+    width:min(1800px, calc(100% - 40px));
+    max-width:1800px;
+}
+
+
+/* Card choices */
+
+#cardChoices{
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:flex-start;
+
+    gap:40px;
+
+    margin-top:20px;
+}
+
+
+/* Individual card buttons */
+
+.higher-lower-card{
+    width:500px;
+    height:850px;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:10px;
+
+    padding:25px;
+
+    box-sizing:border-box;
+
+    font-size:24px;
+    font-weight:bold;
+
+    background:#ffb300;
+    color:#111;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+
+.higher-lower-card:hover{
+    transform:translateY(-3px);
+
+    background:#ffc107;
+}
+
+
+/* Images shown after the player chooses */
+
+.higher-lower-card img{
+    width:500px;
+    max-width:100%;
+
+    margin:0;
+}
+
+
+/* Card name and value shown after selection */
+
+.higher-lower-card strong{
+    font-size:34px;
+}
+
+.higher-lower-card span{
+    font-size:26px;
+}
+
+#gameInfo{
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:40px;
+
+    margin-top:0px;
+
+    min-height:0px;
+}
+
+/* Score */
+
+#score{
+    margin-top:0px;
+
+    font-size:34px;
+    font-weight:bold;
+}
+
+/* Correct / incorrect result */
+
+#result{
+    margin-top:0px;
+
+    font-size:34px;
+    font-weight:bold;
+}
+
+.higher-or-lower-page h1{
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+
+/* Mobile */
+
+@media (max-width:768px){
+
+    .higher-or-lower-page{
+        width:calc(100% - 30px);
+    }
+
+
+    #cardChoices{
+        flex-direction:column;
+        align-items:center;
+        gap:25px;
+    }
+
+
+    .higher-lower-card{
+        width:100%;
+        max-width:400px;
+		height: 500px;
+    }
+
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Hearthstone Tools - Higher or Lower</title>
+
+<link rel="stylesheet" href="styles.css">
+
+</head>
+
+
+<body>
+
+<div class="container higher-or-lower-page">
+
+    <h1>Higher or Lower</h1>
+
+
+    <div id="gameContainer">
+
+        <!-- Start screen -->
+
+        <div id="startScreen">
+
+            <p>
+                Choose which card has the higher value.
+            </p>
+
+            <button id="startButton">
+                Start Game
+            </button>
+
+        </div>
+
+
+        <!-- Game screen -->
+
+        <div id="gameScreen" style="display:none;">
+
+            <h2 id="question"></h2>
+
+			<div id="gameInfo">
+				<div id="score">
+					Score: 0
+				</div>
+				
+				<div id="result"></div>
+				
+				<button
+					id="continueButton"
+					style="display:none;">
+
+					Continue
+
+				</button>
+				
+				        <!-- Game over screen -->
+
+				<div id="gameOverScreen"
+					style="display:none;">
+
+					<h2>Game Over</h2>
+
+					<p id="finalScore"></p>
+
+					<button id="restartButton">
+						Restart
+					</button>
+				</div>
+			
+			</div>
+
+            <div id="cardChoices">
+
+                <button
+                    id="cardOne"
+                    class="higher-lower-card">
+                </button>
+
+
+                <button
+                    id="cardTwo"
+                    class="higher-lower-card">
+                </button>
+
+            </div>
+
+			</br>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="hearthstone.js"></script>
+
+<script src="higherorlower.js"></script>
+
+</body>
+
+</html>
